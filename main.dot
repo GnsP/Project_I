@@ -1,0 +1,11 @@
+digraph G{nodesep=0.5;ordering=out;
+node_1[shape=box, style=dashed, fontsize=14, fontname="Consolas", label="STATEMENT\nACTION = EVAL & PRINT"];
+node_1->node_2;
+node_2[shape=box, fontsize=14, fontname="Consolas", label="S-EXPRESSION"];
+node_2->node_5[peripheries=2];
+node_5[shape=box, fontsize=14, fontname="Consolas", label="SYMBOL\na"];
+node_2->node_6;
+node_6[shape=box, fontsize=14, fontname="Consolas", label="OPERATOR\nPLUS"];
+node_2->node_7;
+node_7[shape=box, fontsize=14, fontname="Consolas", label="SYMBOL\nb"];
+}
