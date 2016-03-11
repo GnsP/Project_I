@@ -1,7 +1,7 @@
 CC=g++
 HEADERS=lexer.hpp includes.hpp parser.hpp
 OBJ=lexer.o parser.o main.o
-CFLAGS=-g
+CFLAGS=-g -Wall
 all:main.bin clean
 	
 main.bin:$(OBJ)

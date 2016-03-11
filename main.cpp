@@ -18,8 +18,15 @@ int main(){
 	//cout<<str;
 	StatementParser parse(str);//"$s+{$[]a+$[~(-7),8,true?x:{y+z}]b}=5");
 	Statement *expr = parse.getStmt();
+#ifdef PARSE_OUT_DOT_
 	cout<<"digraph G{nodesep=0.5;ordering=out;"<<endl;
 	expr->printDot(0);
 	cout<<"}"<<endl;
+#endif
+
+#ifdef PARSE_OUT_XML_
+	expr->print();
+#endif
+	
 	return 0;
 }

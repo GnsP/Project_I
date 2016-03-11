@@ -121,7 +121,7 @@ size_t IndexedParser::parse_(size_t begin, Indexed &ind){
 			return ++i;
 		}
 	}
-	sParser.construct(tok_stream_,++i);
+	sParser.construct(tok_stream_,i); // was ++i before change
 	sParser.setDelimiter(RBRACKET);
 	sres = sParser.getSExpr();
 	i += sres.second;
@@ -152,7 +152,7 @@ size_t VariableParser::parse_(size_t begin, Variable &var){
 			i += lres.second;
 
 			var.context_ = lres.first;
-			//i++;
+			i++;
 		}
 		else{
 			I_error e("1 Wrong usage of VARIABLE");
@@ -164,7 +164,7 @@ size_t VariableParser::parse_(size_t begin, Variable &var){
 		I_error e("2 Wrong usage of VARIABLE");
 		e.print();
 	}
-	//tok_stream_[i].print();
+//	tok_stream_[i].print();
 	if(tok_stream_[i].type_ == SYMBOL){
 		strcpy(var.var_name_, tok_stream_[i].token_.sym);
 		return ++i;
@@ -236,7 +236,7 @@ size_t Logical_notParser::parse_(size_t begin, Logical_not &expr){
 				ires = iParser.getIndexed();
 				j += ires.second;
 				j--;
-				count--;
+				//count--;
 			}
 
 
@@ -897,6 +897,31 @@ size_t Compare_EqParser::parse_(size_t begin, Compare_Eq &expr){
 
 	return i;
 }
+
+
+/**
+
+
+                                 ______________
+                           ,===:'.,            `-._
+                                `:.`---.__         `-._
+                                  `:.     `--.         `.
+                                    \.        `.         `.
+                            (,,(,    \.         `.   ____,-`.,
+                         (,'     `/   \.   ,--.___`.'
+                     ,  ,'  ,--.  `,   \.;'         `
+                      `{D, {    \  :    \;
+                        V,,'    /  /    //
+                        j;;    /  ,' ,-//.    ,---.      ,
+                        \;'   /  ,' /  _  \  /  _  \   ,'/
+                              \   `'  / \  `'  / \  `.' /
+                               `.___,'   `.__,'   `.__,'  
+
+
+                               HERE BE DRAGONS
+
+*/
+
 
 pair<Component, size_t> ComponentParser::getComponent(){
 	pair<Component, size_t> ret;

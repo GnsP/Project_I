@@ -32,8 +32,11 @@ struct atom{
 	int node_id_;
 	void printDot(int parent);
 
-	atom():node_id_(nodeCounter++){};
+	atom():node_id_(nodeCounter++),indexed_(false){};
+#else
+	atom():indexed_(false){}
 #endif
+	
 
 	void print();
 };
